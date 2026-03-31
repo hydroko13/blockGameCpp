@@ -1,12 +1,11 @@
 #include <iostream>
-#include <glad/glad.h>
-#include <test/test.h>
+#include <game/game.h>
 
 int main() {
 
-	std::cout << "Init\n";
+	Game game;
 
-	Test();
+	game.Run();
 
 	return 0;
 }
