@@ -1,6 +1,12 @@
 #include <game/game.h>	
 
 
+
+void framebufferResizeCallback(GLFWwindow* win, int width, int height)
+{
+	glViewport(0, 0, width, height);
+}
+
 Game::Game() {
 	std::cout << "Game class constructor called!\n";
 
@@ -20,6 +26,14 @@ Game::Game() {
 	}
 
 
+	glfwMakeContextCurrent(this->glfwWindow);
+
+	if (!gladLoadGLLoader((GLADloadproc)glfwGetProcAddress)) {
+		throw "ERROR: Glad load failed!";
+	}
+
+
+	glfwSetFramebufferSizeCallback(this->glfwWindow, framebufferResizeCallback);
 }
 
 Game::~Game() {
@@ -32,5 +46,19 @@ Game::~Game() {
 
 void Game::Run() {
 	std::cout << "Running game!\n";
+
+	glClearColor(0.1f, 0.1f, 0.1f, 1.0f);
+
+	while (!glfwWindowShouldClose(this->glfwWindow)) {
+
+		glClear(GL_COLOR_BUFFER_BIT);
+
+
+		glfwSwapBuffers(this->glfwWindow);
+		glfwPollEvents();
+
+
+	}
+
 }
 

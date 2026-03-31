@@ -1,6 +1,8 @@
 #pragma once
 #include <iostream>
+#include <glad/glad.h>
 #include <GLFW/glfw3.h>
+
 
 class Game {
 	// Game Class
@@ -8,8 +10,8 @@ class Game {
 private:
 
 	GLFWwindow* glfwWindow;
-	int windowWidth = 1024;
-	int windowHeight = 720;
+	int windowWidth = 800;
+	int windowHeight = 450;
 
 public:
 
@@ -20,3 +22,5 @@ public:
 	
 };
 
+
+void framebufferResizeCallback(GLFWwindow* win, int width, int height);
