@@ -3,18 +3,10 @@
 
 int main() {
 
-	try {
+	Game game;
 
-		Game game;
-
-
-
-		game.Run();
-	}
-	catch (const char* e){
-		std::cout << e << std::endl;
-		return -1;
-	}
+	game.Run();
 
 	return 0;
 }
+

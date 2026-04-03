@@ -24,3 +24,4 @@ public:
 
 
 void framebufferResizeCallback(GLFWwindow* win, int width, int height);
+void DebugCallbackOPENGL();
