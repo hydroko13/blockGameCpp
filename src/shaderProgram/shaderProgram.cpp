@@ -147,4 +147,6 @@ void ShaderProgram::Init(const char* vertShaderPath, const char* fragShaderPath)
 
 void ShaderProgram::Use() {
 	assert(this->linkProgramSuccess && this->programCreated);
+	glUseProgram(this->shaderProgram);
+	std::cout << "Using shader program!\n";
 }
