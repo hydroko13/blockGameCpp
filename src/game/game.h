@@ -3,6 +3,7 @@
 #include <glad/glad.h>
 #include <GLFW/glfw3.h>
 #include <shaderProgram/shaderProgram.h>
+#include <textLabel/textLabel.h>
 
 
 class Game {
@@ -15,6 +16,7 @@ private:
 	int windowHeight = 450;
 
 	ShaderProgram shaderProgram;
+	TextLabel label1;
 
 public:
 

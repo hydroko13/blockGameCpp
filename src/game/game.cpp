@@ -16,7 +16,7 @@ void DebugCallbackOPENGL(GLenum source, GLenum type, GLuint id, GLenum severity,
 
 }
 
-Game::Game() {
+Game::Game() : label1(std::string("Hello world!")) {
 	std::cout << "Game class constructor called!\n";
 
 
@@ -65,6 +65,9 @@ Game::Game() {
 	this->shaderProgram.Init("vert.glsl", "frag.glsl");
 
 	this->shaderProgram.Use();
+
+	this->label1.Init();
+	
 }
 
 Game::~Game() {
@@ -89,6 +92,9 @@ void Game::Run() {
 
 		glClear(GL_COLOR_BUFFER_BIT);
 
+		this->shaderProgram.Use();
+
+		this->label1.Draw();
 
 		glfwSwapBuffers(this->glfwWindow);
 		glfwPollEvents();
