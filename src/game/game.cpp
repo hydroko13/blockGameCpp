@@ -54,19 +54,27 @@ Game::Game() {
 		throw std::runtime_error("GLAD OpenGL loading failed!");
 	}
 	else {
-		std::cout << "GLAD OpenGL loading succeeded!\n";
+		std::cout << "GLAD OpenGL loading succeeded ( " << glGetString(GL_VERSION) << " )\n"; 
+
 	}
 
 
+
+
 	glfwSetFramebufferSizeCallback(this->glfwWindow, framebufferResizeCallback);
+
+	this->shaderProgram.Init("vert.glsl", "frag.glsl");
 }
 
 Game::~Game() {
 	std::cout << "Game class destructor called!\n";
 
-	glfwDestroyWindow(this->glfwWindow);
-	glfwTerminate();
 
+
+}
+
+GLFWwindow* Game::getWindow() {
+	return this->glfwWindow;
 }
 
 void Game::Run() {
@@ -89,4 +97,5 @@ void Game::Run() {
 	}
 
 }
+
 
