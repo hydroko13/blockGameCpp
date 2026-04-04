@@ -9,13 +9,11 @@ void framebufferResizeCallback(GLFWwindow* win, int width, int height)
 }
 
 void DebugCallbackOPENGL(GLenum source, GLenum type, GLuint id, GLenum severity, GLsizei length, const GLchar *message, const void *userParam) {
-	for (int i = 0; i < length; i++) {
-		GLchar* c = (GLchar*) message + i;
+	
+	
+	std::cout << std::string(message, length) << std::endl;
 
-		std::cout << *c;
-	}
-	//std::cout << "\t" << "[" << severity << "]";
-	std::cout << std::endl;
+	
 
 }
 
@@ -59,11 +57,17 @@ Game::Game() {
 	}
 
 
+	glEnable(GL_DEBUG_OUTPUT);
+	glEnable(GL_DEBUG_OUTPUT_SYNCHRONOUS);
+	glDebugMessageCallback(DebugCallbackOPENGL, nullptr);
+	glDebugMessageControl(GL_DONT_CARE, GL_DONT_CARE, GL_DONT_CARE, 0, nullptr, GL_TRUE);
 
 
 	glfwSetFramebufferSizeCallback(this->glfwWindow, framebufferResizeCallback);
 
 	this->shaderProgram.Init("vert.glsl", "frag.glsl");
+
+	this->shaderProgram.Use();
 }
 
 Game::~Game() {
@@ -80,8 +84,7 @@ GLFWwindow* Game::getWindow() {
 void Game::Run() {
 	std::cout << "Running game!\n";
 
-	glEnable(GL_DEBUG_OUTPUT);
-	glDebugMessageCallback(DebugCallbackOPENGL, 0);
+
 	glClearColor(0.1f, 0.1f, 0.1f, 1.0f);
 
 

@@ -5,6 +5,7 @@
 #include <filesystem>
 #include <sstream>
 #include <cstring>
+#include <cassert>
 
 class ShaderProgram {
 
@@ -17,10 +18,13 @@ public:
 	bool vertShaderSuccess = false;
 	bool fragShaderSuccess = false;
 	bool linkProgramSuccess = false;
+	bool programCreated = false;
 
 	ShaderProgram();
 	~ShaderProgram();
 	void Init(const char* vertShaderPath, const char* fragShaderPath);
+
+	void Use();
 
 	
 
